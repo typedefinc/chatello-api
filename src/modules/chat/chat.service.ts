@@ -78,6 +78,13 @@ const getMessagesByChat = (chatId: number) => {
       createdAt: 'desc'
     },
     take: 25,
+    include: {
+      user: {
+        select: {
+          name: true,
+        }
+      }
+    }
   });
 };
 

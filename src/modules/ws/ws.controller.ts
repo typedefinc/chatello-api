@@ -2,6 +2,7 @@ import { SocketStream } from "@fastify/websocket";
 import { FastifyRequest } from "fastify";
 import { getChatByAddress } from "../chat/chat.service";
 import { createMessage } from "./ws.service";
+import { getUserById } from "../user/user.service";
 
 const rooms: Record<string, SocketStream[]> = {};
 
@@ -24,9 +25,15 @@ const websocketHandler = (connection: SocketStream, request: FastifyRequest<{
 
     if (chat) {
       const newMessage = await createMessage(chat.id, userId, content);
+      const user = await getUserById(userId);
 
       rooms[roomId].forEach((duplex: SocketStream) => {
-        duplex.socket.send(JSON.stringify(newMessage));
+        duplex.socket.send(JSON.stringify({
+          ...newMessage,
+          user: {
+            name: user?.name || '',
+          }
+        }));
       });
     }
   });
