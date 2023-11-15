@@ -3,14 +3,15 @@ FROM node:latest
 WORKDIR /usr/src/app
 
 COPY package*.json ./
-RUN yarn
+RUN npm install --silent
 
 COPY prisma ./prisma/
 
 COPY . .
 
+RUN npm build
 RUN npx prisma generate
 
 EXPOSE 3000
 
-CMD yarn run build && yarn run start
+CMD npm run start

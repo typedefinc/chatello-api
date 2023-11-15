@@ -2,6 +2,7 @@
   "name": "chatello-api",
   "version": "1.0.0",
   "description": "",
+  "licenses": [],
   "main": "index.js",
   "scripts": {
     "build": "tsc",
