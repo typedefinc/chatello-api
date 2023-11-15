@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "nodemon src/index.ts",
-    "start": "node ./docker/dist/index.js"
+    "start": "node ./dist/index.js"
   },
   "keywords": [],
   "author": "",
