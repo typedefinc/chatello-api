@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/home-chat-backend.iml" filepath="$PROJECT_DIR$/.idea/home-chat-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/chatello-api.iml" filepath="$PROJECT_DIR$/.idea/chatello-api.iml" />
     </modules>
   </component>
 </project>

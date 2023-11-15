@@ -19,15 +19,11 @@ export const buildApp = (options: FastifyServerOptions) => {
     },
   });
 
+  fastify.register(fastifyCors, { origin: true });
+
   fastify.register(fastifyJwt, { secret: 'EcIlVdMSB2f666vQPOhJyrkiBC9tpNTBu' });
 
   fastify.register(defaultController, { prefix: '/api' });
-
-  fastify.register(fastifyCors, () => (request: FastifyRequest, callback: any) => {
-    callback(null, {
-      origin: true,
-    });
-  });
 
   fastify.addHook("onRequest", async (request: FastifyRequest, reply: FastifyReply) => {
     try {
